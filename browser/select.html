@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue SELECT</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+      <h1>{{message}}</h1>  
+      
+      <select v-model="a">
+        <option value="" disabled>请选择</option>  
+        <option value="1">你好</option>
+        <option value="2">VUE</option>
+      </select>  
+
+      <div>single SELECT :  {{a}}</div>
+
+
+      <select v-model="b" multiple>
+        <option value="" disabled>请选择</option>  
+        <option value="1">你好</option>
+        <option value="2">VUE</option>
+        <option value="3">js</option>
+      </select>  
+
+      <div>mutli SELECT :  {{b}}</div>
+     
+    </div>
+  
+</body>
+<script src="./js/vue.js"></script>
+
+<script>
+
+    // v-cloak  {{}}的解决闪烁问题
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            a: '' ,
+            b : []
+        }
+    })
+</script>
+
+</html>

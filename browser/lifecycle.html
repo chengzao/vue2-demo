@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue lifeCycle</title>
+  <script src="./js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-color="red">{{message}}</div>
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    beforeCreate: function () {
+      console.log('beforeCreate')
+    },
+    data: {
+      message: 'Hello Vue!',
+      red: "red"
+    },
+    created: function () {
+      console.log('created')
+    },
+    directives: {
+      color(el, bindings) {
+        // console.log(arguments);
+        el.style.color = bindings.value;
+      }
+    },
+    beforeMount: function () {
+      console.log('beforeMount')
+    },
+    mounted: function () {
+      console.log('mounted')
+    },
+    activated: function () {
+      console.log('keep-alive 组件激活时调用')
+    },
+    deactivated: function () {
+      console.log('keep-alive 组件停用时调用')
+    },
+    beforeUpdate: function () {
+      console.log('beforeUpdate')
+    },
+    updated: function () {
+      console.log('updated')
+    },
+    errorCaptured: function (err, vm, info) {
+      console.log('当捕获一个来自子孙组件的错误时被调用')
+    },
+    beforeDestroy: function () {
+      console.log('beforeDestroy')
+    },
+    destroyed: function () {
+      console.log('destroyed')
+    }
+
+
+  })
+
+
+  vm.$mount('#app')
+
+</script>
+
+</html>

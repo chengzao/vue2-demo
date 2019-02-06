@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue start</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    <div id="app-2">
+        <!-- <span v-bind:title="message">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span> -->
+        <span :title="message">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+    </div>
+    <div id="app-3">
+        <p v-if="seen">现在你看到我了</p>
+    </div>
+    <div id="app-4">
+        <ol>
+            <li v-for="(item, index) in todos">
+                {{ item.text + ' - ' + index}}
+            </li>
+        </ol>
+    </div>
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <!-- <button v-on:click="reverseMessage">逆转消息</button> -->
+        <button @click="reverseMessage">逆转消息</button>
+    </div>
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>
+    <div id="app-7">
+       <p v-show="isShow">show</p>
+    </div>
+    <div id="app-8"></div>
+    <div id="app-9">
+        姓：<input type="text" v-model="firstName">
+        名：<input type="text" v-model="lastName">
+        <div>{{fullName}}</div>
+        <div>{{count}}</div>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!'
+        }
+    })
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            message: '页面加载于 ' + new Date().toLocaleString()
+        }
+    })
+    var app3 = new Vue({
+        el: '#app-3',
+        data: {
+            seen: true
+        }
+    })
+    var app4 = new Vue({
+        el: '#app-4',
+        data: {
+            todos: [{
+                    text: '学习 JavaScript'
+                },
+                {
+                    text: '学习 Vue'
+                },
+                {
+                    text: '整个牛项目'
+                }
+            ]
+        }
+    })
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+    var app6 = new Vue({
+        el: '#app-6',
+        data: {
+            message: 'Hello Vue!'
+        }
+    })
+    var app7 = new Vue({
+        el: '#app-7',
+        data: {
+            isShow: false
+        }
+    })
+    var app8 = new Vue({
+        el: '#app-8',
+        template: '<h1>template</h1>'
+    })
+    var app9 = new Vue({
+        el: "#app-9",
+        data:{
+            firstName: '',
+            lastName: '',
+            count:0
+        },
+        // 计算属性
+        computed: {
+            fullName: function(){
+                return this.firstName + ' ' + this.lastName;
+            }
+        },
+        // 监听属性变化
+        watch: {
+            // firstName: function(){
+            //     this.count++
+            // },
+            // lastName: function(){
+            //     this.count++
+            // },
+            fullName: function(){
+                this.count++
+            }
+        }
+    })
+</script>
+
+</html>

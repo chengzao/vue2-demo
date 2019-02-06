@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue event</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+      <h1>{{message}}</h1>  
+      <button @click="handleClickMe">Click Me</button>  
+
+      <button @click="handleParmas('parmas')">Click Parmas</button>
+      
+      <button @click="handleEvent($event,'Event')">Click Event</button>
+   
+      <div>{{res}}</div>  
+   
+
+      <div @click="fun1">
+          fun1
+          <div @click="fun2">
+              fun2
+              <div @click.stop="fun3">
+                  fun3
+              </div>
+          </div>
+      </div>  
+
+      <h2>capture</h2>
+      <div @click.capture="fun1">
+          fun1
+          <div @click="fun2">
+              fun2
+              <div @click="fun3">
+                  fun3
+              </div>
+          </div>
+      </div>  
+
+
+        <!-- 阻止单击事件继续传播 -->
+        <a v-on:click.stop="doThis"></a>
+
+        <!-- 提交事件不再重载页面 -->
+        <form v-on:submit.prevent="onSubmit"></form>
+
+        <!-- 修饰符可以串联 -->
+        <a v-on:click.stop.prevent="doThat"></a>
+
+        <!-- 只有修饰符 -->
+        <form v-on:submit.prevent></form>
+
+        <!-- 添加事件监听器时使用事件捕获模式 -->
+        <!-- 即元素自身触发的事件先在此处理，然后才交由内部元素进行处理 -->
+        <div v-on:click.capture="doThis">...</div>
+
+        <!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+        <!-- 即事件不是从内部元素触发的 -->
+        <div v-on:click.self="doThat">...</div>
+
+    </div>
+  
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            res: ''
+        },
+        methods: {
+            handleClickMe () {
+                this.res = 'Hello , Event'
+            },
+            handleParmas (a) {
+                this.res = "This Parmas is : " + a
+            },
+            handleEvent (event, a) {
+                console.log(event , a);
+
+                this.res = 'This is $event';
+            },
+            fun1 (){alert('fun1')},
+            fun2 (){alert('fun2')},
+            fun3 (){alert('fun3')}
+        }
+    })
+   
+</script>
+
+</html>
