@@ -4,9 +4,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import Meta from 'vue-meta'
+import KuButton from '@chengzao/ku-button'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import '@chengzao/ku-button/dist/ku-button.css'
 
 import App from './App'
 
@@ -27,6 +29,7 @@ Vue.use(ElementUI)
 Vue.use(MyNotification)
 Vue.use(Tabs)
 Vue.use(MyNotify)
+Vue.use(KuButton)
 
 const router = createRouter()
 const store = createStore()

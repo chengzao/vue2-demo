@@ -1,6 +1,7 @@
 <template>
   <div>
     <button v-on:click="show =! show">show / hide</button>
+    <ku-button type="primary" size="small">真酷！!</ku-button>
     <transition name="fade">
       <p v-if="show">Hello vue</p>
     </transition>
@@ -10,7 +11,7 @@
 <script>
 export default {
   name: 'demo',
-  data () {
+  data() {
     return {
       show: true
     }

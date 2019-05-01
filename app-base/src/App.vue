@@ -28,23 +28,23 @@
 </template>
 
 <script>
-import Header from './layout/header.vue';
-import Footer from './layout/footer.vue';
-import Loading from './components/loading/loading.vue';
-import TodoList from './views/todo2/TodoList.vue';
-import Transition from './views/transition.vue';
+import Header from './layout/header.vue'
+import Footer from './layout/footer.vue'
+import Loading from './components/loading/loading.vue'
+import TodoList from './views/todo2/TodoList.vue'
+import Transition from './views/transition.vue'
 
-import directives from './directives/directives';
-import filters from './filters/filters';
+import directives from './directives/directives'
+import filters from './filters/filters'
 
-import fetchApi from './api/fetch.js';
+import fetchApi from './api/fetch.js'
 
 //  mapState,
 //  mapGetters,
 //  mapActions,
 //  mapMutations
 
-import { mapMutations, mapState, mapActions } from 'vuex';
+import { mapMutations, mapState, mapActions } from 'vuex'
 
 export default {
   name: 'App',
