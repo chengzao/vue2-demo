@@ -13,7 +13,7 @@
     "practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js"
   },
   "dependencies": {
-    "@chengzao/ku-button": "^1.0.0",
+    "@chengzao/ku-button": "^1.0.1",
     "axios": "^0.18.0",
     "element-ui": "^2.4.6",
     "vue": "^2.5.17",

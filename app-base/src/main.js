@@ -8,7 +8,7 @@ import KuButton from '@chengzao/ku-button'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import '@chengzao/ku-button/dist/ku-button.css'
+// import '@chengzao/ku-button/dist/ku-button.css'
 
 import App from './App'
 
