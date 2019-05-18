@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todo list</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="iptVal">
+            <button @click="handleSumbit">提交</button>
+        </div>
+        <ul>
+            <!-- <li @click v-for="(item, index) in list" :key="index">{{item}}</li> -->
+            <!-- 使用组件 -->
+            <todo-item 
+                @click v-for="(item, index) in list" 
+                :key="index"
+                :content="item"
+                :index="index"
+                @delete="handleDelete"
+            >
+            </todo-item>
+        
+        
+        </ul>
+    </div>
+</body>
+<script>
+    // 子组件 --> 父组件  ： 发布订阅模式的方法监听
+    // 父组件 --> 子组件  ： 属性传递的实行传递
+
+    // 定义名为 todo-item 的全局组件
+    Vue.component('todo-item', {
+        template: '<li @click="handClick">{{content}}</li>',
+        props: ['content','index'],
+        methods: {
+            handClick: function(){
+                this.$emit('delete',this.index)
+            }
+        }
+    })
+
+    var app = new Vue({
+        el: "#app",
+        data:{
+            iptVal: "hello",
+            list: []
+        },
+        methods: {
+            handleSumbit: function(){
+                this.list.push(this.iptVal);
+                this.iptVal = '';
+            },
+            handleDelete:function(index){
+                // console.log(index);
+                this.list.splice(index,1);
+            }
+        }
+    })
+</script>
+</html>
