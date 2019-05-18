@@ -1,0 +1,72 @@
+/* 放入公共代码如下 */
+.fl {
+  float: left !important;
+}
+.fr {
+  float: right !important;
+}
+
+.hide {
+  display: none !important;
+}
+.opacity0 {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  filter: alpha(opacity=0);
+}
+.clearfix::after,
+.clearfix::before {
+  display: table;
+  clear: both;
+  overflow: hidden;
+  height: 0;
+  content: '';
+}
+
+.clearfix {
+  zoom: 1;
+}
+.ov-auto {
+  overflow: auto;
+}
+.ov-hide {
+  overflow: hidden;
+}
+
+.hairlines-s {
+  position: relative;
+  border: none;
+}
+.hairlines-s:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  background: #000;
+  width: 100%;
+  height: px2rem(1rem);
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.hairlines {
+  position: relative;
+  margin-bottom: px2rem(20rem);
+  border: none;
+}
+.hairlines:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: px2rem(1rem) solid #000;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 200%;
+  height: 200%;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+}
