@@ -1,7 +1,7 @@
 const path = require('path')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob-all')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
@@ -58,17 +58,16 @@ module.exports = {
         }),
       )
       plugins.push(
-        new UglifyJsPlugin({
-          uglifyOptions: {
+        new TerserPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true, // Must be set to true if using source-maps in production
+          terserOptions: {
             compress: {
-              warnings: false,
               drop_console: true,
-              drop_debugger: false,
-              pure_funcs: ['console.log'], // 移除console
+              drop_debugger: true,
             },
           },
-          sourceMap: false,
-          parallel: true,
         }),
       )
       plugins.push(
