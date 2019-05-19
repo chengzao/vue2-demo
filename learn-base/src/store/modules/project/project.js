@@ -1,5 +1,5 @@
 import { getProject, getTask } from '@api/project'
-import router from '@@/router'
+// import router from '@@/router'
 
 const PROJECT_TASK = 'PROJECT_TASK'
 
@@ -27,7 +27,7 @@ const actions = {
       commit(PROJECT_TASK, res)
     } catch (error) {
       res = { code: error }
-      router.replace({ name: 'NotFound' })
+      // router.replace({ name: 'NotFound' })
     }
   },
 }

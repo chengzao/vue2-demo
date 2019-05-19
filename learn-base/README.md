@@ -103,6 +103,7 @@ npm run serve
 - 上线打包命令
 
 ```bash
+npm run dll
 npm run build
 ```
 
