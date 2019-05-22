@@ -1,0 +1,218 @@
+/* 重置样式 */
+@charset "utf-8";
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* 要注意表单元素并不继承父级 font 的问题 */
+button,
+input,
+select,
+textarea {
+  font: 14px 'Helvetica Neue', 'Arial', 'PingFang SC', 'Hiragino Sans GB',
+    '\5B8B\4F53', 'Microsoft Yahei', sans-serif;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  color: #333;
+  /*2017-4-26 设计推的+虎哥同意的, 然后加上的*/
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Helvetica Neue', Tahoma, Arial, 'Microsoft Yahei', sans-serif;
+  font-size: 14px;
+  overflow-y: hidden;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/*ie 输入框X和密码查看*/
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+/* 去掉各Table cell 的边距并让其边重合 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* IE bug fixed: th 不继承 text-align*/
+th {
+  text-align: inherit;
+}
+/* 去除默认边框 */
+fieldset,
+img {
+  border: none;
+}
+/* 去掉 firefox 下此元素的边框 */
+abbr,
+acronym {
+  border: none;
+  font-variant: normal;
+}
+/* 一致的 del 样式 */
+del {
+  text-decoration: line-through;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-style: normal;
+  font-weight: 500;
+}
+/* 去掉列表前的标识, li 会继承 */
+ol,
+ul {
+  list-style: none;
+}
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption,
+th {
+  text-align: left;
+}
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 400;
+  line-height: inherit;
+}
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 18px;
+}
+h4 {
+  font-size: 16px;
+}
+h5 {
+  font-size: 14px;
+  font-family: 'Helvetica Neue', 'Arial', 'PingFang SC', 'Hiragino Sans GB',
+    '\5B8B\4F53', 'Microsoft Yahei', sans-serif;
+}
+h6 {
+  font-size: 12px;
+  font-family: 'Helvetica Neue', 'Arial', 'PingFang SC', 'Hiragino Sans GB',
+    '\5B8B\4F53', 'Microsoft Yahei', sans-serif;
+}
+q:before,
+q:after {
+  content: '';
+}
+/* 统一上标和下标 */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+/*code, kbd, pre, samp {
+  font-family: "Helvetica Neue","Arial","PingFang SC","Hiragino Sans GB","\5B8B\4F53","Microsoft Yahei",sans-serif!important;
+}*/
+/* 让链接在 hover 状态下显示下划线 */
+a:hover {
+  text-decoration: underline;
+}
+a:focus {
+  color: #333;
+  text-decoration: none;
+}
+/* 默认不显示下划线，保持页面简洁 */
+ins,
+a {
+  color: #333;
+  text-decoration: none;
+}
+/* IE6,7焦点点状线去除 */
+a:focus,
+*:focus {
+  outline: none;
+  text-decoration: none;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #ccc;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #ccc;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #ccc;
+}
+pre {
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
