@@ -19,11 +19,8 @@ module.exports = {
   },
   plugins: [
     // 清除之前的dll文件
-    // new CleanWebpackPlugin(['*.js'], {
-    //   root: path.join(__dirname, dllPath),
-    // }),
     new CleanWebpackPlugin({
-      root: path.resolve(__dirname, dllPath, '*.js'),
+      root: path.resolve(__dirname, dllPath, '*.*'),
       exclude: [],
       verbose: true,
       dry: false,
