@@ -24,8 +24,7 @@ console.log(pages)
 
 module.exports = {
   lintOnSave: false, // 禁用eslint
-  publicPath:
-    process.env.NODE_ENV === 'production' ? '//my.cdn.com/sxVue/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
   productionSourceMap: false,
   pages,
   devServer: {
