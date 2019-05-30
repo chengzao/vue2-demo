@@ -6,9 +6,12 @@
 
 <script>
 export default {
-  name: 'About',
-  data () {
-    return {}
+  name: "About",
+  data() {
+    return {};
   }
-}
+};
 </script>
+<style lang="stylus">
+@import '~assets/css/about.styl';
+</style>

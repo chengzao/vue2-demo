@@ -27,14 +27,26 @@ module.exports = merge(baseConfig, {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader'
+          // 'css-loader'
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
         ]
-      }, 
+      },
       {
         test: /\.styl(us)?$/,
         use: [
           'vue-style-loader',
-          'css-loader',
+          // 'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
           'stylus-loader'
         ]
       }
