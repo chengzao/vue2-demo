@@ -20,7 +20,8 @@ module.exports = {
       'assets': utils.resolve('src/assets'),
       'pages': utils.resolve('src/pages'),
       'static': utils.resolve('static'),
-      'components': utils.resolve('src/components')
+      'components': utils.resolve('src/components'),
+      '@views': utils.resolve('src/views')
     }
   },
 
@@ -71,6 +72,15 @@ module.exports = {
             name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
           }
         }
+      },
+      {
+        test: /\.md$/,
+        use: [
+          { loader: 'vue-loader' },
+          {
+            loader: require.resolve('./markdownLoader')
+          }
+        ]
       }
     ]
   },

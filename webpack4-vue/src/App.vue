@@ -3,6 +3,7 @@
     <div>
       <router-link to="/Home">go Home</router-link>
       <router-link to="/About">go About</router-link>
+      <router-link to="/md">go Markdown</router-link>
     </div>
     <div>
       <p>{{getCounter}}</p>
