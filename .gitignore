@@ -7,3 +7,5 @@
 **/.idea
 **/*.log
 **/www
+**/package-lcok.json
+**/yarn.lock
