@@ -1,10 +1,10 @@
 // import Todo from '../views/todo/todo.vue'
 // import Login from '../views/login/login.vue'
 
-const First = { template: '<div>first app</div>' }
-const Second = { template: '<div>Second app</div>' }
-const Home = { template: '<div>Home app</div>' }
-const user = { template: `<div>{{$route.params.username}}</div>` }
+import ElementUI from '@/components/elementUI'
+import Other from '@/views/todo/Other.vue'
+import Home from '@/views/todo/Home.vue'
+import User from '@/views/todo/User.vue'
 
 const scrollBehavior = (to, from, savedPosition) => {
   if (savedPosition) {
@@ -42,6 +42,11 @@ export default [
       import(/* webpackChunkName: 'helloworld' */ '@/views/hello/HelloWorld')
   },
   {
+    path: '/ui',
+    name: 'ElementUI',
+    component: ElementUI
+  },
+  {
     path: '/todo',
     name: 'todo',
     component: () => import(/* webpackChunkName: 'todo' */ '@/views/todo/Todo'),
@@ -51,11 +56,10 @@ export default [
         name: 'item',
         components: {
           default: Home,
-          left: First,
-          right: Second
+          right: Other
         }
       },
-      { path: ':username', component: user }
+      { path: ':username', component: User }
     ]
   },
   {
