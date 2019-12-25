@@ -18,10 +18,12 @@
   "prettier.singleQuote": true,
   "prettier.semi": false,
   "prettier.requireConfig": true,
-  "prettier.eslintIntegration": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "files.associations": {
     "*.vue": "vue"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
 }
