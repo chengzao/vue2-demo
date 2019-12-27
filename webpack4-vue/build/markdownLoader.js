@@ -1,7 +1,13 @@
 const markdown = require('markdown-it')
+const mdInclude = require('./markdown')
 
 module.exports = function(src) {
-  const html = markdown().render(src)
+
+  let md = markdown()
+
+  md.use(mdInclude)
+
+  const html = md.render(src)
   return (
     `<template>\n` +
       `<div class="markdown">${html}</div>\n` +
