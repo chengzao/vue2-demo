@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item, index) in list" :key="index">{{item.number +'%'}} <input type="checkbox" :value="item.id" v-model="checkList"></li>
+    </ul>
+    <input type="text" :value="number" @input="handleVal">
+    <button type="button" @click="submit">提交</button>
+    {{ checkList }}
+    <div>
+      <input type="text" v-model="report.rise">
+      <input type="text" v-model="report.fluctuation">
+      <input type="text" v-model="report.decline">
+      <button :disable="disable">button</button>
+    </div>
+
+
+  </div>
+  <script>
+
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'hello Vue!',
+        number: '11',
+        report: {
+          rise: '',
+          fluctuation: '',
+          decline: ''
+        },
+        checkList:[],
+        list: [
+          {
+            id: 1,
+            number: '10',
+          },
+          {
+            id: 2,
+            number: '20',
+          },
+          {
+            id: 3,
+            number: '30',
+          },
+        ]
+      },
+      computed: {
+         disable() {
+            let res = false;
+            console.log(this.report.rise == '')
+            if (this.report.rise == '' && this.report.fluctuation == '' && this.report.decline == '') {
+                res = false;
+                console.log(1);
+            } else {
+                res = !this.report.rise || !this.report.fluctuation || !this.report.decline;
+                console.log(2);
+            }
+            console.log('res', res, this.report);
+            return res;
+        }
+      },
+      methods: {
+        handleVal(e){
+          var _val = e.target.value.replace(/[^\d.]/g,'');
+          e.target.value = _val
+          this.number = _val
+        },
+        submit(){
+          console.log(this.list)
+          console.log(this.number)
+        }
+      },
+    })
+  </script>
+</body>
+</html>

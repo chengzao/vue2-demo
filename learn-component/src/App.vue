@@ -14,7 +14,7 @@
     <button @click="show">notify</button>
     <div>{{red | capitalize}}</div>
     <div v-color="red">v-color</div>
-    <input v-focus type="text">
+    <input v-focus type="text" />
     <todo-list></todo-list>
     <keep-alive>
       <Transition></Transition>
@@ -49,64 +49,64 @@ import { mapMutations, mapState, mapActions } from 'vuex'
 export default {
   name: 'App',
   metaInfo: {
-    title: 'Vue App'
+    title: 'Vue App',
   },
-  data () {
+  data() {
     return {
       filter: 'all',
       stats: ['all', 'active', 'completed'],
-      red: 'red'
+      red: 'red',
     }
   },
   directives,
   filters,
-  created () {
+  created() {
     // this.startLoading()
     this.endLoading()
 
     this.$myNotify({
-      content: '必须输入要做的内容'
+      content: '必须输入要做的内容',
     })
 
     fetchApi.fetchGithub().then(res => console.log(res))
   },
-  mounted () {
+  mounted() {
     this.updateCountAsync({
       num: 5,
-      time: 2000
+      time: 2000,
     })
   },
   computed: {
     ...mapState({
       isLoading: state => state.loading,
-      count: 'count'
-    })
+      count: 'count',
+    }),
   },
   components: {
     Header,
     Footer,
     Loading,
     TodoList,
-    Transition
+    Transition,
   },
   methods: {
     ...mapMutations(['startLoading', 'endLoading']),
     ...mapActions(['decrementAsync', 'incrementAsync', 'updateCountAsync']),
-    handleChangeTab (value) {
+    handleChangeTab(value) {
       this.filter = value
     },
-    show () {
+    show() {
       this.$MyNotiyPlugin('asdas')
     },
-    handleDecrement () {
+    handleDecrement() {
       this.decrementAsync().then(res => {
         console.log('res', res)
       })
     },
-    handleIncrement () {
+    handleIncrement() {
       this.incrementAsync()
-    }
-  }
+    },
+  },
 }
 </script>
 

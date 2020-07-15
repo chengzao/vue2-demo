@@ -14,6 +14,11 @@ export default {
       msg: 'About',
     }
   },
+  methods: {
+    getName(a) {
+      return a > 10 ? 'aaaaa' : a > 30 ? 'bccccc' : 'ddddc'
+    },
+  },
   components: {
     About,
   },

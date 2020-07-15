@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Alert</title>
+  <style>
+.cms-confirm-dialog {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity 0.3s ease;
+  width: 100%;
+  z-index: 50;
+}
+.cms-confirm-dialog .cms-confirm-content {
+  display: table-cell;
+  vertical-align: middle;
+  overflow-x: hidden;
+  position: fixed;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.33) 0px 2px 8px;
+  border-radius: 5px;
+  outline: 0px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: 360px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cms-confirm-dialog .cms-confirm-header {
+  align-items: center;
+  background-color: #6e82a3;
+  background-color: #6e82a3;
+  color: #fff;
+  padding: 6px 15px;
+  font-size: 12px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16);
+  font-weight: bold;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 1;
+  position: relative;
+}
+.cms-confirm-dialog .cms-confirm-header .cms-icon-close {
+  position: absolute;
+  font-style: normal;
+  top: -5px;
+  right: 8px;
+  padding: 0 4px;
+  font-size: 25px;
+  font-weight: normal;
+  color: #000;
+  text-shadow: 0 1px 0 #FFF;
+  opacity: 0.2;
+  cursor: pointer;
+  border: 0;
+}
+.cms-confirm-dialog .cms-confirm-body {
+  align-items: center;
+  padding: 20px;
+}
+.cms-confirm-dialog .cms-confirm-footer {
+  padding: 16px;
+  text-align: center;
+}
+.cms-confirm-dialog .cms-confirm-footer .cms-confirm-button {
+  color: white;
+  width: 70px;
+  background-color: #6e82a3;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 14px;
+  cursor: pointer;
+  margin: 0 10px;
+  font-size: 12px;
+  display: inline-block;
+}
+  </style>
+</head>
+<body>
+   
+  <div id="app">
+    <h1>App</h1>
+    <button @click="other">Click other</button>
+    <!-- <toast></toast> -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>  
+  <script>
+
+var tpl = `
+<div class="cms-confirm-dialog">
+  <div class="cms-confirm-content">
+      <div class="cms-confirm-header">{{ title }} <i @click="handleClose" class='cms-icon-close'>×</i></div>
+      <div class="cms-confirm-body">
+          {{content}}
+      </div>
+      <div class="cms-confirm-footer">
+          <div class="cms-confirm-button" @click="handleConfirm">{{ sureText }}</div>
+      </div>
+  </div>
+</div>
+`
+
+var Toast = Vue.extend({
+  template: tpl,
+  data(){
+    return {
+      title: '标题',
+      content: '',
+      sureText: '确认',
+      cancelText: '取消'
+    }
+  },
+  methods: {
+    handleConfirm(){
+      this.remove()  
+      this.confirm && this.confirm()
+    },
+    handleClose(){
+      this.remove()
+      this.close && this.close()
+    },
+    remove(){
+      var doc = document.body
+      doc.removeChild(this.$el)
+    }
+  },
+})
+
+var showToast = function (options) {
+  options = Object.assign({}, options)
+  const instance = new Toast({
+    data: options
+  })
+  let doc = document.body
+  instance.$mount()
+  doc.appendChild(instance.$el)
+  return instance
+}
+
+Vue.prototype.$toast = showToast
+new Vue({
+  el: '#app',
+  components:{
+    toast: Toast
+  },
+  methods: {
+      other(){
+        this.$toast({
+          title: "弹窗标题",
+          content: '123131'
+        })
+      }
+  }
+})
+
+</script>
+
+</body>
+</html>
