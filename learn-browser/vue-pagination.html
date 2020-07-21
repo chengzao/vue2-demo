@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,10 +19,12 @@
       -ms-user-select: none;
       user-select: none;
     }
+
     .pagination-vue .page-list span {
       font-size: 14px;
       color: #333333;
     }
+
     .pagination-vue .page-list .jump {
       padding: 2px 6px;
       text-align: center;
@@ -33,7 +34,7 @@
       border-radius: 6px;
     }
 
-    .pagination-vue .page-list .jump:hover{
+    .pagination-vue .page-list .jump:hover {
       cursor: pointer;
       color: #fff;
       background: #ff1e1b;
@@ -46,13 +47,16 @@
       background: #ff1e1b;
       border-radius: 6px;
     }
+
     .pagination-vue .page-list .jump.disabled {
       pointer-events: none;
       color: #999999;
     }
+
     .pagination-vue .page-list .go-btn {
       font-size: 14px;
     }
+
     .pagination-vue .page-list .jump-inp input {
       width: 44px;
       height: 20px;
@@ -64,6 +68,7 @@
       text-align: center;
       outline: none;
     }
+
     .pagination-vue .page-list .ellipsis {
       padding: 0px 8px;
       text-align: center;
@@ -72,9 +77,11 @@
       background: rgba(204, 204, 204, 0);
       border-radius: 6px;
     }
+
     .pagination-vue .page-list .jump-point {
       margin-left: 10px;
     }
+
     .pagination-vue .pageNum {
       display: inline-block;
       height: 28px;
@@ -92,7 +99,7 @@
     <h1>{{msg}}</h1>
     <vue-pagination2></vue-pagination2>
     <pagination-com :total="total" :current="current" @update:current="handleCurrentPage"></pagination-com>
-    <!-- <pagination-com :total="total" :current.sync="current"></pagination-com> -->
+    <pagination-com :total="total" :current.sync="current"></pagination-com>
   </div>
 
 
@@ -121,78 +128,78 @@
       </div>
     </div>`
 
-    var PaginationCom =  Vue.extend({
-      data: function(){
+    var PaginationCom = Vue.extend({
+      data: function() {
         return {
           current_page: this.current, //当前页
           page: 7,
           changePage: '', //跳转页
         }
       },
-      props:{
+      props: {
         total: {
           type: Number,
           require: true
         },
-        current:{
+        current: {
           type: Number,
           default: 1
         }
       },
-      watch:{
-        current(val){
+      watch: {
+        current(val) {
           this.current_page = val
         }
       },
       template: template,
       computed: {
         // 是否展示
-        show: function () {
+        show: function() {
           return this.total && this.total != 1
         },
-        startPage: function(){
+        startPage: function() {
           return this.current_page == 1
         },
-        endPage: function(){
+        endPage: function() {
           return this.current_page == this.total
         },
         // 显示前...
-        sMore: function () {
+        sMore: function() {
           if (this.total <= this.page) return false;
-           var mids = this.mids;
+          var mids = this.mids;
           var len = mids.length
-          return mids[len-1] > this.page - 1;
+          return mids[len - 1] > this.page - 1;
         },
         // 显示后...
-        eMore: function () {
+        eMore: function() {
           if (this.total < this.page) return false;
           var mids = this.mids;
           var len = mids.length
           return mids[0] + len < this.total;
         },
         // 中间显示的页数
-        mids: function () {
-          var left = this.current_page+1,
-            right = this.total-1,
+        mids: function() {
+          var left = this.current_page + 1,
+            right = this.total - 1,
             mid = this.page - 2,
             mid_pages = [];
-          
+
           // 总页数大于当前显示最大页
-          if(this.total > this.page){
-             if (this.current_page > mid && this.current_page < this.total - (mid-1)) {
+          if (this.total > this.page) {
+            if (this.current_page > mid && this.current_page < this.total - (mid - 1)) {
               left = Number(this.current_page) - 3;
               right = Number(this.current_page) + 1;
             } else {
               if (this.current_page <= mid) {
                 left = 2;
-                right = this.page-1;
+                right = this.page - 1;
               } else {
-                right = this.total-1;
+                right = this.total - 1;
                 left = this.total - this.page + 2;
               }
             }
-          }else{
-            right = this.total-1;
+          } else {
+            right = this.total - 1;
             left = 2;
           }
           while (left <= right) {
@@ -203,16 +210,16 @@
         },
       },
       methods: {
-        prev: function(){
-          this.current_page -- 
+        prev: function() {
+          this.current_page--
           this.$emit('update:current', this.current_page)
         },
-        next: function(){
-          this.current_page ++
+        next: function() {
+          this.current_page++
           this.$emit('update:current', this.current_page)
         },
-        jumpPage: function (current) {
-          if(current <= this.total && current > 0){
+        jumpPage: function(current) {
+          if (current <= this.total && current > 0) {
             this.current_page = current;
             this.$emit('update:current', current)
           }
@@ -222,7 +229,7 @@
 
 
     Vue.component('vue-pagination2', {
-      data: function(){
+      data: function() {
         return {
           current_page: 1, //当前页
           total: 8, //总页数
@@ -233,52 +240,52 @@
       template: template,
       computed: {
         // 是否展示
-        show: function () {
+        show: function() {
           return this.total && this.total != 1
         },
-        startPage: function(){
+        startPage: function() {
           return this.current_page == 1
         },
-        endPage: function(){
+        endPage: function() {
           return this.current_page == this.total
         },
         // 显示前...
-        sMore: function () {
+        sMore: function() {
           if (this.total <= this.page) return false;
-           var mids = this.mids;
+          var mids = this.mids;
           var len = mids.length
-          return mids[len-1] > this.page - 1;
+          return mids[len - 1] > this.page - 1;
         },
         // 显示后...
-        eMore: function () {
+        eMore: function() {
           if (this.total < this.page) return false;
           var mids = this.mids;
           var len = mids.length
           return mids[0] + len < this.total;
         },
         // 中间显示的页数
-        mids: function () {
-          var left = this.current_page+1,
-            right = this.total-1,
+        mids: function() {
+          var left = this.current_page + 1,
+            right = this.total - 1,
             mid = this.page - 2,
             mid_pages = [];
-          
+
           // 总页数大于当前显示最大页
-          if(this.total > this.page){
-             if (this.current_page > mid && this.current_page < this.total - (mid-1)) {
+          if (this.total > this.page) {
+            if (this.current_page > mid && this.current_page < this.total - (mid - 1)) {
               left = Number(this.current_page) - 2;
               right = Number(this.current_page) + 2;
             } else {
               if (this.current_page <= mid) {
                 left = 2;
-                right = this.page-1;
+                right = this.page - 1;
               } else {
-                right = this.total-1;
+                right = this.total - 1;
                 left = this.total - this.page + 2;
               }
             }
-          }else{
-            right = this.total-1;
+          } else {
+            right = this.total - 1;
             left = 2;
           }
           while (left <= right) {
@@ -289,14 +296,16 @@
         },
       },
       methods: {
-        prev: function(){
-          this.current_page -- 
+        prev: function() {
+          this.current_page--
+          this.$emit('update:current', this.current_page)
         },
-        next: function(){
-          this.current_page ++
+        next: function() {
+          this.current_page++
+          this.$emit('update:current', this.current_page)
         },
-        jumpPage: function (current) {
-          if(current <= this.total && current > 0){
+        jumpPage: function(current) {
+          if (current <= this.total && current > 0) {
             this.current_page = current;
             this.$emit('update:page', current)
           }
@@ -306,21 +315,21 @@
 
     new Vue({
       el: '#app',
-      data:{
+      data: {
         msg: 'Hello',
         total: 30,
         current: 3
       },
-      components:{
+      components: {
         'pagination-com': PaginationCom
       },
-      methods:{
-        handleCurrentPage: function(current){
+      methods: {
+        handleCurrentPage: function(current) {
           console.log('current page', current)
         }
       },
       watch: {
-        current: function(val){
+        current: function(val) {
           console.log(val)
         }
       },
@@ -329,89 +338,6 @@
         this.current = 6
       },
     })
-
-    // var newlist = new Vue({
-    //   el: '#app',
-    //   data: {
-    //     current_page: 1, //当前页
-    //     total: 8, //总页数
-    //     page: 7,
-    //     changePage: '', //跳转页
-    //   },
-    //   computed: {
-    //     // 是否展示
-    //     show: function () {
-    //       return this.total && this.total != 1
-    //     },
-    //     startPage: function(){
-    //       return this.current_page == 1
-    //     },
-    //     endPage: function(){
-    //       return this.current_page == this.total
-    //     },
-    //     // 显示前...
-    //     sMore: function () {
-    //       if (this.total <= this.page) return false;
-    //        var mids = this.mids;
-    //       var len = mids.length
-    //       return mids[len-1] > this.page - 1;
-    //     },
-    //     // 显示后...
-    //     eMore: function () {
-    //       if (this.total < this.page) return false;
-    //       var mids = this.mids;
-    //       var len = mids.length
-    //       return mids[0] + len < this.total;
-    //     },
-    //     // 中间显示的页数
-    //     mids: function () {
-    //       var left = this.current_page+1,
-    //         right = this.total-1,
-    //         mid = this.page - 2,
-    //         mid_pages = [];
-          
-    //       // 总页数大于当前显示最大页
-    //       if(this.total > this.page){
-    //          if (this.current_page > mid && this.current_page < this.total - (mid-1)) {
-    //           left = Number(this.current_page) - 2;
-    //           right = Number(this.current_page) + 2;
-    //         } else {
-    //           if (this.current_page <= mid) {
-    //             left = 2;
-    //             right = this.page-1;
-    //           } else {
-    //             right = this.total-1;
-    //             left = this.total - this.page + 2;
-    //           }
-    //         }
-    //       }else{
-    //         right = this.total-1;
-    //         left = 2;
-    //       }
-    //       while (left <= right) {
-    //         mid_pages.push(left);
-    //         left++;
-    //       }
-    //       return mid_pages;
-    //     },
-    //   },
-    //   methods: {
-    //     prev: function(){
-    //       this.current_page -- 
-    //     },
-    //     next: function(){
-    //       this.current_page ++
-    //     },
-    //     jumpPage: function (current) {
-    //       if(current <= this.total && current > 0){
-    //         this.current_page = current;
-    //       }
-    //       console.log('current_page', current)
-    //     },
-    //   },
-    // })
-
-
   </script>
 
 

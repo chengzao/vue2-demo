@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>vue i18n</title>
 </head>
 <body>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -50,12 +50,12 @@
 
     // 通过 `i18n` 选项创建 Vue 实例
     const vm = new Vue({
-      data:{
+      data: {
         lang: 'en'
       },
       i18n,
       watch: {
-        lang(val){
+        lang(val) {
           this.$i18n.locale = val
         }
       },

@@ -152,20 +152,19 @@
 
 
     var tpl = `
-
-<div class="shadow">
-  <div class="modal">
-      <div class="header">{{ title }}</div>
-      <div class="body">
-          {{content}}
-      </div>
-      <div class="footer">
-          <div class="item success" @click="handleConfirm">{{ sureText }}</div>
-          <div class="item red" @click="handleCancel">{{ cancelText }}</div>
-      </div>
-  </div>
-</div>
-`
+        <div class="shadow">
+          <div class="modal">
+              <div class="header">{{ title }}</div>
+              <div class="body">
+                  {{content}}
+              </div>
+              <div class="footer">
+                  <div class="item success" @click="handleConfirm">{{ sureText }}</div>
+                  <div class="item red" @click="handleCancel">{{ cancelText }}</div>
+              </div>
+          </div>
+        </div>
+        `
 
     var Toast = Vue.extend({
       template: tpl,
@@ -205,6 +204,7 @@
     }
 
     Vue.prototype.$toast = showToast
+
     new Vue({
       el: '#app',
       components: {
